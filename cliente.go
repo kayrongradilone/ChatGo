@@ -21,7 +21,7 @@ type cliente struct {
 		if err != nil {
 			return 
 		}
-		msg = strings.Trim(msg, "\r\n" )
+		msg = strings.Trim(msg, "\r\n")
 		args := strings.Split(msg, " ")
 		cmd := strings.TrimSpace(args[0])
 		
@@ -57,14 +57,14 @@ type cliente struct {
 				args: args,
 			}
 		default:
-			c.err(fmt.Errorf("Comando nao reconhecido %s", cmd))
+			c.err(fmt.Errorf("Comando nao reconhecido: %s", cmd))
 		}
 	}
  }
 
  func (c *cliente) err(err error){
-	c.conn.Write([]byte("ERR" + err.Error() + "\n"))
+	c.conn.Write([]byte("err: " + err.Error() + "\n"))
  }
  func (c *cliente) msg(msg string){
-	c.conn.Write([]byte(">" + msg + "\n"))
+	c.conn.Write([]byte("> " + msg + "\n"))
  }
