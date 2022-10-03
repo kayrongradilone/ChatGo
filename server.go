@@ -90,7 +90,7 @@ func (s *server) msg(c *cliente, args []string){
 	}
 
 	msg := strings.Join(args[1:], " ")
-	c.sala.broadcast(c, c.nome+": "+msg)
+	c.sala.broadcast(c, c.nome +  ": "+ msg)
 }
 func (s *server) sair(c *cliente, args []string){
 	log.Printf("Cliente foi desconectado: %s", c.conn.RemoteAddr().String())
